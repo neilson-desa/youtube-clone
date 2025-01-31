@@ -20,6 +20,7 @@ app.post('/process-video', async (req, res) => {
     // get bucket & filename from Cloud Pub/Sub message
     let data;
     try {
+        // Base64 because of pub/sub
         const message = Buffer.from(req.body.message.data, 'base64').toString('utf8');
         data = JSON.parse(message);
         if (!data.name) {

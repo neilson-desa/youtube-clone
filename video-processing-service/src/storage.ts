@@ -4,8 +4,8 @@ import ffmpeg from "fluent-ffmpeg";
 
 const storage = new Storage();
 
-const RAW_VIDEO_BUCKET_NAME = "youtube-clone-raw-videos";
-const PROCESSED_VIDEO_BUCKET_NAME = "youtube-clone-processed-videos";
+const RAW_VIDEO_BUCKET_NAME = "nd-youtube-clone-raw-videos";
+const PROCESSED_VIDEO_BUCKET_NAME = "nd-youtube-clone-processed-videos";
 
 const LOCAL_RAW_VIDEO_PATH = "./raw-videos";
 const LOCAL_PROCESSED_VIDEO_PATH = "./processed-videos";
@@ -20,6 +20,7 @@ export function setupDirectories() {
 function ensureDirectoryExists(directoryPath: string) {
     if (!fs.existsSync(directoryPath)) {
         fs.mkdirSync(directoryPath, { recursive: true}); // recursive: true enables creating nested directories
+        console.log(`Directory created at ${directoryPath}`);
     }
 }
 
@@ -45,6 +46,7 @@ export async function downloadRawVideo(filename: string) {
         .download({
             destination: `${LOCAL_RAW_VIDEO_PATH}/${filename}`
         });
+    console.log(`gs://${RAW_VIDEO_BUCKET_NAME}/${filename} downloaded to ${LOCAL_RAW_VIDEO_PATH}/${filename}`);
 }
 
 export async function uploadProcessedVideo(filename: string) {
