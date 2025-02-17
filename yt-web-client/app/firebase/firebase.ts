@@ -6,12 +6,12 @@ import { getAuth, signInWithPopup, GoogleAuthProvider, User, onAuthStateChanged 
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-    apiKey: "AIzaSyCRP2g-E4D7V0NGjocXdYzbYUnVfSMlOcQ",
-    authDomain: "clone-e1d0f.firebaseapp.com",
-    projectId: "clone-e1d0f",
-    storageBucket: "clone-e1d0f.firebasestorage.app",
-    messagingSenderId: "905665230082",
-    appId: "1:905665230082:web:47b3ec9314e9437f00be1b"
+    apiKey: process.env.apiKey,
+    authDomain: process.env.authDomain,
+    projectId: process.env.projectId,
+    storageBucket: process.env.storageBucket,
+    messagingSenderId: process.env.messagingSenderId,
+    appId: process.env.appId
 };
 
 // Initialize Firebase
