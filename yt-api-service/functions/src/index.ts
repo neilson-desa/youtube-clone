@@ -67,5 +67,6 @@ export const generateUploadUrl = onCall({maxInstances: 1}, async (request) => {
       expires: Date.now() + 15 * 60 * 1000, // 15 minutes
     });
 
+  // url here is basically a http REST path that a consumer can use ton construct a PUT request to write into bucket
   return {url, fileName};
 });

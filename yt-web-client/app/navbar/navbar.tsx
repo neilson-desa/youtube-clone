@@ -7,6 +7,8 @@ import {useEffect, useState} from "react";
 import {onAuthStateChangedHelper} from "@/app/firebase/firebase";
 import {User} from "firebase/auth";
 import SignIn from "@/app/navbar/sign-in";
+import Upload from "@/app/navbar/upload";
+import Image from "next/image";
 
 function NavBar() {
     const [user, setUser] = useState<User | null>(null);
@@ -24,9 +26,10 @@ function NavBar() {
         <nav className={styles.nav}>
             <Link href="">
                 <span className={styles.logoContainer}>
-                    <img className={styles.logo} src="/youtube-logo.svg" alt="YouTube Logo"/>
+                    <Image className={styles.logo} src="/youtube-logo.svg" alt="YouTube Logo"/>
                 </span>
             </Link>
+            { user && <Upload/> }
             <SignIn user={user}/>
         </nav>
     )
