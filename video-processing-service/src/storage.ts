@@ -63,11 +63,11 @@ export async function uploadProcessedVideo(filename: string) {
     await bucket.file(filename).makePublic();
 }
 
-export function deleteRawVideo(filename: string) {
+export function deleteLocalRawVideo(filename: string) {
     return deleteFile(`${LOCAL_RAW_VIDEO_PATH}/${filename}`);;
 }
 
-export function deleteProcessedVideo(filename: string) {
+export function deleteLocalProcessedVideo(filename: string) {
     return deleteFile(`${LOCAL_PROCESSED_VIDEO_PATH}/${filename}`);
 }
 
