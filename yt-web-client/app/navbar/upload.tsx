@@ -3,7 +3,7 @@
 import {Fragment} from "react";
 
 import styles from "./upload.module.css";
-import {uploadVideo} from "@/app/firebase/functions";
+import {uploadVideo} from "@/app/firebase/firebase";
 
 export default function Upload() {
     const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {

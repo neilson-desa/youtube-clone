@@ -1,9 +1,19 @@
+'use client';
+
+import { useSearchParams } from "next/navigation";
+
 export default function Watch() {
+    const videoSrc = useSearchParams().get('v');
+    const videoPrefix = 'https://storage.googleapis.com/nd-youtube-clone-processed-videos/'
+
     return (
         <div>
-            <p>
-                Watch Page
-            </p>
+            <h1>Watch Page</h1>
+            <video
+                controls
+                src={videoPrefix + videoSrc}
+            />
         </div>
     )
 }
+

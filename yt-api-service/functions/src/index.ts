@@ -25,6 +25,8 @@ initializeApp();
 const firestore = new Firestore();
 const storage = new Storage();
 
+const VIDEO_COLLECTION_ID = "videos";
+
 // triggered by signInWithGoogle function in web client (see react code)
 export const createUser = auth.user().onCreate((user) => {
   const userInfo = {
@@ -67,6 +69,12 @@ export const generateUploadUrl = onCall({maxInstances: 1}, async (request) => {
       expires: Date.now() + 15 * 60 * 1000, // 15 minutes
     });
 
-  // url here is basically a http REST path that a consumer can use ton construct a PUT request to write into bucket
+  // url here is basically a http REST path that a consumer can use to construct a PUT request to write into bucket
   return {url, fileName};
+});
+
+export const getVideos = onCall({maxInstances: 1}, async () => {
+  const querySnapshot =
+      await firestore.collection(VIDEO_COLLECTION_ID).limit(10).get();
+  return querySnapshot.docs.map((doc) => doc.data());
 });
