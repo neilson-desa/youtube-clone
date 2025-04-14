@@ -1,1 +1,4 @@
 rootProject.name = 'video-processing-spring-boot-service'
+
+include 'web' 
+include 'service'
