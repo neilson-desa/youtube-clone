@@ -1,5 +1,6 @@
 plugins {
 	id 'java'
+	id 'org.springframework.boot' version '3.4.4' apply false
 }
 
 group = 'com.neilsondesa'
@@ -18,17 +19,11 @@ java {
 
 subprojects {
 	apply plugin: 'java'
-	apply plugin: 'io.spring.dependency-management'
-
-	dependencyManagement {
-        imports {
-            mavenBom "org.springframework.boot:spring-boot-dependencies:3.4.4"
-        }
-    }
 
 	dependencies {
+		implementation platform('org.springframework.boot:spring-boot-dependencies:3.4.4')
+
 		implementation 'org.springframework.boot:spring-boot-starter'
-		implementation 'org.springframework.boot:spring-boot-starter-web'
 		testImplementation 'org.springframework.boot:spring-boot-starter-test'
 		testRuntimeOnly 'org.junit.platform:junit-platform-launcher:1.12.2'
 	}
